@@ -13,16 +13,13 @@ def quick_sort(arr):  # nlogn
     return quick_sort(less) + equal + quick_sort(greater)
 
 
-def permutations(arr):  # n!
-    if len(arr) <= 1:
-        return [arr]
-    else:
-        result = []
-        for i in range(len(arr)):
-            rest = arr[:i] + arr[i + 1:]
-    for p in permutations(rest):
-        result.append([arr[i]] + p)
-        return result
+def quadratic_algo(items):
+    for item in items:
+        for item2 in items:
+            print(item, ' ', item2)
+
+
+quadratic_algo([4, 5, 6, 8])
 
 
 def algorithm2(n):  # n3
@@ -43,5 +40,6 @@ def algorithm3(n5):
             else:
                 low = mid + 1
 
-print(quick_sort([1,23,5,6,4]))
-print(permutations([1,23,5,6,4]))
+
+print(quick_sort([1, 23, 5, 6, 4]))
+print(permutations([1, 23, 5, 6, 4]))
