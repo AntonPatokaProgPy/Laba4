@@ -13,13 +13,36 @@ def quick_sort(arr):  # nlogn
     return quick_sort(less) + equal + quick_sort(greater)
 
 
-def quadratic_algo(items):
-    for item in items:
-        for item2 in items:
-            print(item, ' ', item2)
+# def permutations(arr):  # n!
+#     if len(arr) <= 1:
+#         return [arr]
+#     else:
+#         result = []
+#         for i in range(len(arr)):
+#             rest = arr[:i] + arr[i + 1:]
+#     for p in permutations(rest):
+#         result.append([arr[i]] + p)
+#         return result
+def generate_permutations(arr):
+    if len(arr) == 0:
+        return [[]]  # базовый случай, возвращаем пустой список
+
+    permutations = []  # результирующий список перестановок
+
+    for i in range(len(arr)):
+        element = arr[i]
+        remaining_elements = arr[:i] + arr[i + 1:]  # удаляем текущий элемент из массива
+        for permutation in generate_permutations(remaining_elements):
+            permutations.append(
+                [element] + permutation)  # объединяем текущий элемент с перестановкой оставшихся элементов
+
+    return permutations
 
 
-quadratic_algo([4, 5, 6, 8])
+# пример использования
+arr = [1, 2, 3]
+permutations = generate_permutations(arr)
+print(permutations)
 
 
 def algorithm2(n):  # n3
@@ -42,4 +65,4 @@ def algorithm3(n5):
 
 
 print(quick_sort([1, 23, 5, 6, 4]))
-print(permutations([1, 23, 5, 6, 4]))
+print(generate_permutations([1, 23, 5, 6, 4]))
